@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Educalinks</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_2">Activity2</string>
+    <string name="Inicio">Inicio</string>
+    <string name="App">EducaLinks</string>
+    <string name="Agenda">Agenda</string>
+    <string name="factura">Facturas</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="Acerca">Acerca de</string>
+    <string name="cerrar">Cerrar Sesión</string>
+    <string name="contrase">Contraseña</string>
+    <string name="usuario">Usuario</string>
+    <string name="inicio">Inicio Sesión</string>
+    <string name="openDrawer">open</string>
+    <string name="closeDrawer">clase</string>
+    <string name="educalinks">www.educalinks.com.ec<a href="www.educalinks.com.ec" target="_top"></a></string>
+
+
+    <string name="title_activity_3">Educalinks</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Inicio</item>
+        <item>Agenda</item>
+        <item>Salir</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_inicio</item>
+        <item>@drawable/ic_agenda</item>
+        <item>@drawable/ic_notificaciones</item>
+        <item>@drawable/ic_mensajes</item>
+        <item>@drawable/ic_salir</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_activity_inicial">Educalinks</string>
+    <string name="title_activity_create_notification">createNotification</string>
+    <string name="title_activity_notification_receiver">notificationReceiver</string>
+    <string name="title_activity_conexion_internet">ConexionInternet</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_obtener_url">obtenerUrl</string>
+    <string name="title_activity_activity_update">ActivityUpdate</string>
+    <string name="title_activity_activity_noti">ActivityNoti</string>
+
+
+</resources>

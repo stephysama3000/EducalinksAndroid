@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="MATERIALES"
+        android:paddingLeft="15dp"
+        android:background="@color/azulInicio"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FAFAFA"
+        android:paddingBottom="10dp"
+        android:gravity="bottom|center_horizontal" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:orientation="vertical">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listViewClases"
+            android:layout_gravity="center_horizontal"
+            android:divider="@null"
+            android:dividerHeight="0dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noClases"
+        android:text="No hay clases que presentar"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        android:textSize="18sp"
+        />
+</LinearLayout>

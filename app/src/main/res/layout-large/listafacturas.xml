@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:id="@+id/layoutList"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/prof_image"
+            android:src="@drawable/visto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            app:border_color="#FF000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="alumno"
+                android:id="@+id/nombresAlumno"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@+id/prof_image"
+                android:layout_toEndOf="@+id/prof_image"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="numeroFactura"
+                android:id="@+id/numeroFactura"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/prof_image"
+                android:layout_toEndOf="@+id/prof_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fecha"
+                android:id="@+id/fechaEmision"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/prof_image"
+                android:layout_toEndOf="@+id/prof_image" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:baselineAligned="false">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/btndown"
+                android:background="@drawable/btn_descargar"
+                android:layout_gravity="right"/>
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:id="@+id/ValorTotal"
+                android:background="@drawable/buttontotal"
+                android:layout_gravity="right"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="list_background_pressed" type="color">#CEF6F5</item>
+    <item name="counter_text_bg" type="color">#58D3F7</item>
+    <item name="counter_text_color" type="color">#81F781</item>
+    <item name="list_item_title" type="color">#2A0A12</item>
+    <item name="list_background" type="color">#FFFFFF</item>
+    <item name="background_main" type="color">#E0ECF8</item>
+    <item name="spinner_selector" type="color">#CEE3F6</item>
+    <item name="popup_background" type="color">#eef6f6</item>
+    <color name="PrimaryColor">#0565b1</color>
+    <color name="PrimaryDarkColor">#1976D2</color>
+    <color name="statusBarColor">#4169E1</color>
+    <color name="myControlColor">#e157ce</color>
+    <color name="white_textInput">#ffffff</color>
+    <color name="apptheme_color">#19ea15</color>
+    <color name="statusBar">#dbdedb</color>
+    <color name="gris">#6E6E6E</color>
+    <color name="azul">#08298A</color>
+    <color name="turquesa">#41BEDC</color>
+    <color name="grisFondo">#EFEFEF</color>
+    <color name="azulmenu">#233855</color>
+    <color name="celestefondotabla">#41bedc</color>
+    <color name="botontotalturquesa">#45A5C1</color>
+    <color name="azulInicio">#4084b9</color>
+    <color name="azulClarito">#333333</color>
+    <color name="verde">#419c64</color>
+    <color name="naranja">#e55a2f</color>
+    <color name="naranjaOsc">#ac330d</color>
+
+
+
+
+
+
+    <color name="toolBarColor">#4682B4</color>
+
+    <integer-array name="androidcolors">
+        <item>@color/list_background_pressed</item>
+        <item>@color/counter_text_bg</item>
+        <item>@color/counter_text_color</item>
+        <item>@color/list_item_title</item>
+        <item>@color/list_background</item>
+        <item>@color/popup_background</item>
+    </integer-array>
+
+</resources>

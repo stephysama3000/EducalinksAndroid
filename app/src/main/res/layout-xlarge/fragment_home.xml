@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearlayout"
+    android:background="@color/grisFondo"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:background="@color/azulInicio">
+
+
+        <ImageView
+            android:layout_width="309dp"
+            android:layout_height="153dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/logo_inicio"
+            android:layout_marginBottom="20dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:id="@+id/ButtonAgenda"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_agenda1"/>
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:id="@+id/ButtonMateriales"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/ic_materiales1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/ButtonCalificaciones"
+            android:background="@drawable/ic_calificaciones1"
+            />
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:id="@+id/ButtonMensajes"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/ic_mensajes1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/ButtonFacturas"
+            android:background="@drawable/ic_facturas1"
+            />
+
+        <ImageButton
+            android:layout_width="318dp"
+            android:layout_height="230dp"
+            android:id="@+id/ButtonNotificaciones"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/ic_noti1"/>
+
+    </LinearLayout>
+</LinearLayout>
+
+

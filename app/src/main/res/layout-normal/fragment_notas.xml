@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.robert.pruebavolley.activity.notasFragment"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="LIBRETA DE CALIFICACIONES"
+        android:background="@color/azulInicio"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="#FAFAFA"
+        android:paddingBottom="10dp"
+        android:gravity="bottom|center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listViewNotas"
+            android:layout_gravity="center_horizontal"
+            android:divider="@null"
+            android:dividerHeight="0dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noNotas"
+        android:text="No hay notas que presentar"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        android:textSize="18sp"
+        />
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:visibility="gone"
+        android:id="@+id/warning"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="@drawable/warning"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bloqueo"
+        android:text="Favor acercarse a la secretaría de la institución"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>
