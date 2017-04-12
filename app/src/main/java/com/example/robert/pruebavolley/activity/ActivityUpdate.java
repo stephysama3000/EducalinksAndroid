@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class ActivityUpdate extends AppCompatActivity {
 
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     final Map<String,String> paramsAgenda = new HashMap<String,String>();
     SharedPreferences settings;
     Fragment fragment = null;

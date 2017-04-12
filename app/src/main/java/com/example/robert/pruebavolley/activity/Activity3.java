@@ -4,8 +4,8 @@ package com.example.robert.pruebavolley.activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.GravityCompat;
@@ -102,7 +103,7 @@ public class Activity3 extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     //alumnos
-    String URL_alumnos = "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos = "http://app.educalinks.com.ec/mobile/main.php";
     final Map<String, String> params = new HashMap<String, String>();
     final Map<String, String> paramsUpdate = new HashMap<String, String>();
     String codigo, nombre, apellido, key;
@@ -126,6 +127,7 @@ public class Activity3 extends AppCompatActivity {
     private int count = 0;
     Boolean imagen = false;
     Fragment fragmentNew;
+    Fragment fragment2;
     Boolean in = false;
     Bitmap b;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -136,6 +138,8 @@ public class Activity3 extends AppCompatActivity {
     String cursoCodiAlum, cursoCodi,cursoAlum ,paralAlum, distipo,periodo,repr_app;
     String[] periodoS, cursoCodiAlumS, cursoCodiS, distipoS;
     String reprcodi, colegio ;
+    String URLestadoCuenta = "";
+    String pericodi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,6 +147,25 @@ public class Activity3 extends AppCompatActivity {
         Log.d("Ejecutando", "Activity3");
         pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = pref.edit();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        View headerLayout = navigationView.inflateHeaderView(R.layout.header);
+
+
+        //headerLayout.findViewById(R.id.navigation_view);
+
+        //cuando quito el ACTIONBAR
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+            //setSupportActionBar(toolbar);
+            //getSupportActionBar().setTitle("");
+
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -152,26 +175,26 @@ public class Activity3 extends AppCompatActivity {
 
                 if(notificacion.equals("agenda")){
                     fragment = new AgendaFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.frame, fragment).commit();
                     in = true;
                 }else if(notificacion.equals("mensajes")){
                     fragment = new MensajesFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.frame, fragment).commit();
                     editor.putString("opcionFragment","2");
                     in = true;
                 }else if(notificacion.equals("actualizacion")){
                     fragment = new HomeFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.frame, fragment).commit();
                     in = true;
                 }
 
         }
 
-            AlumnoSpinner = (Spinner) findViewById(R.id.spinner);
-            image = (ImageView) findViewById(R.id.profile_image);
+            AlumnoSpinner = (Spinner) headerLayout.findViewById(R.id.spinner);
+            image = (ImageView)  headerLayout.findViewById(R.id.profile_image);
 
             pref = PreferenceManager.getDefaultSharedPreferences(this);
             String nombreRep = pref.getString("nombreRep", "null");
@@ -180,7 +203,7 @@ public class Activity3 extends AppCompatActivity {
             String usuario = pref.getString("usuario", "null");
             String password = pref.getString("password", "null");
             reprcodi = pref.getString("codigo", "null");
-            String pericodi = pref.getString("periodo", "null");
+            pericodi = pref.getString("periodo", "null");
             String alumnocodi = pref.getString("alumnocodi", "null");
 
 
@@ -192,7 +215,7 @@ public class Activity3 extends AppCompatActivity {
             params.put("password", password);
             params.put("tipo_usua", "2");
             params.put("reprcodi", reprcodi);
-            params.put("pericodi", pericodi);
+            params.put("pericodi", pericodi);//12 para moderna produccion
             params.put("opcion", "listar_alumnos");
 
             ShowAlumnosSpinner(URL_alumnos, params);
@@ -207,7 +230,7 @@ public class Activity3 extends AppCompatActivity {
                     nomCol = "moderna";
                     break;
                 case 11:
-                    nomCol = "ecocabvesp";
+                    nomCol = "ecobabvesp";
                     break;
                 case 12:
                     nomCol = "desarrollo";
@@ -257,7 +280,6 @@ public class Activity3 extends AppCompatActivity {
             apellidoRepre = "";
         }
 
-
             AlumnoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -278,6 +300,8 @@ public class Activity3 extends AppCompatActivity {
 
                                 editor.commit();
                                 if (!nomCol.equals("")) {
+
+                                    URLestadoCuenta = "http://" + nomCol + ".educalinks.com.ec/admin/estado_cuenta/" + nomCol + "/r_estado_cuenta.php?codigoAlumno=" + key +"&codigoPeriodo=" + pericodi ;
                                     imageUrl = "http://demo.educalinks.com.ec/fotos/" + nomCol + "/alumnos/" + periodo + "/" + key + ".jpg";
                                     Log.d("Ejecutando", "ya tengo le URL");
                                     editor = pref.edit();
@@ -312,18 +336,24 @@ public class Activity3 extends AppCompatActivity {
 
             AlumnoSpinner.getBackground().setColorFilter(getResources().getColor(R.color.list_item_title), PorterDuff.Mode.SRC_ATOP);
 
-            toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+            /*toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
 
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("");
+            getSupportActionBar().setTitle("");*/
 
 
             navigationView = (NavigationView) findViewById(R.id.navigation_view);
             if(colegio.equals("26") || colegio.equals("27")){
                 navigationView.getMenu().findItem(R.id.factura).setVisible(false);
+                navigationView.getMenu().findItem(R.id.pagos).setVisible(false);
+                navigationView.getMenu().findItem(R.id.visitas).setVisible(false);
+                navigationView.getMenu().findItem(R.id.estado).setVisible(false);
             }else
             {
                 navigationView.getMenu().findItem(R.id.factura).setVisible(true);
+                navigationView.getMenu().findItem(R.id.pagos).setVisible(true);
+                navigationView.getMenu().findItem(R.id.visitas).setVisible(true);
+                navigationView.getMenu().findItem(R.id.estado).setVisible(true);
             }
 
              int[][] states = new int[][] {
@@ -368,12 +398,12 @@ public class Activity3 extends AppCompatActivity {
                             return true;
                         case R.id.agenda:
                             fragment = new AgendaFragment();
-                            FragmentManager fragmentManager2 = getFragmentManager();
-                            fragmentManager2.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagAgenda").commit();
+                            FragmentManager fragmentManager2 = getSupportFragmentManager();
+                            fragmentManager2.beginTransaction().replace(R.id.frame,fragment).addToBackStack("tagAgenda").commit();
                             return true;
                         case R.id.materiales:
                             fragment = new ClasesFragment();
-                            FragmentManager fragmentManager3 = getFragmentManager();
+                            FragmentManager fragmentManager3 = getSupportFragmentManager();
                             fragmentManager3.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagMater").commit();
                             return true;
                         case R.id.mensajes:
@@ -381,28 +411,47 @@ public class Activity3 extends AppCompatActivity {
                             editor.putString("opcionfragment", "0");
                             editor.commit();
                             //fragment = new MensajesEntFragment();
-                            FragmentManager fragmentManager4 = getFragmentManager();
+                            FragmentManager fragmentManager4 = getSupportFragmentManager();
                             fragmentManager4.beginTransaction().replace(R.id.frame, fragment).addToBackStack("Mensajes").commit();
+                            return true;
+                        case R.id.pagos:
+                            Fragment fragment = new PagosFragment();
+                            FragmentManager fragmentManager5 = getSupportFragmentManager();
+                            fragmentManager5.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagPagos").commit();
                             return true;
                         case R.id.calificaciones:
                             fragment = new notasFragment();
-                            FragmentManager fragmentManager5 = getFragmentManager();
-                            fragmentManager5.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagCalific").commit();
+                            FragmentManager fragmentManager6 = getSupportFragmentManager();
+                            fragmentManager6.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagCalific").commit();
                             return true;
                         case R.id.factura:
                             fragment = new FacturaFragment();
-                            FragmentManager fragmentManager6 = getFragmentManager();
-                            fragmentManager6.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagFact").commit();
+                            FragmentManager fragmentManager7 = getSupportFragmentManager();
+                            fragmentManager7.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagFact").commit();
+                            return true;
+                        case R.id.visitas:
+                            fragment = new visitasMedicasFragment();
+                            FragmentManager fragmentManager8 = getSupportFragmentManager();
+                            fragmentManager8.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagVisitas").commit();
+                            return true;
+                        case R.id.hojavida:
+                            fragment = new hojaVidaFragment();
+                            FragmentManager fragmentManager9 = getSupportFragmentManager();
+                            fragmentManager9.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagHojaVida").commit();
+                            return true;
+                        case R.id.estado:
+                            Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URLestadoCuenta));
+                            startActivity(myIntent);
                             return true;
                         case R.id.notificaciones:
                             fragment = new NotificacionesFragment();
-                            FragmentManager fragmentManager7 = getFragmentManager();
-                            fragmentManager7.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagNoti").commit();
+                            FragmentManager fragmentManager10 = getSupportFragmentManager();
+                            fragmentManager10.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagNoti").commit();
                             return true;
                         case R.id.acerca:
                             fragment = new AcercadeFragment();
-                            FragmentManager fragmentManager8 = getFragmentManager();
-                            fragmentManager8.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagAcerca").commit();
+                            FragmentManager fragmentManager11 = getSupportFragmentManager();
+                            fragmentManager11.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagAcerca").commit();
                             return true;
                         case R.id.cerrar:
                             logoutUser();
@@ -591,7 +640,7 @@ public class Activity3 extends AppCompatActivity {
 
     public void Home() {
         fragment = new HomeFragment();
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagHome").commit();
     }
 
@@ -681,6 +730,25 @@ public class Activity3 extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                //finish();
+                navigationView.getMenu();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
@@ -768,6 +836,18 @@ public class Activity3 extends AppCompatActivity {
         };
         AppController.getInstance().getRequestQueue().add(post);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int variable = pref.getInt("variables", 0);
+
+        if(variable==1){
+            getFragmentManager().popBackStack();
+        }else {
+
+        }
     }
 
 }

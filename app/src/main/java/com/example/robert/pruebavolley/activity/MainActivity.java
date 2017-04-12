@@ -43,7 +43,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.robert.pruebavolley.Adapter.AdapterColegios;
 import com.example.robert.pruebavolley.Clases.AppController;
 import com.example.robert.pruebavolley.Clases.getString;
 import com.example.robert.pruebavolley.R;
@@ -62,9 +61,9 @@ import java.util.TreeMap;
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "TAG";
-    String URL = "http://demo.educalinks.com.ec/mobile/main.php";
-    HashMap<String,String> colegios = new HashMap<>();
-    HashMap<String,String> colegiosCopy = new HashMap<>();
+    String URL = "http://app.educalinks.com.ec/mobile/main.php";
+    TreeMap<Integer,String> colegios = new TreeMap<Integer,String>();
+    TreeMap<Integer,String> colegiosCopy = new TreeMap<Integer,String>();
     String ID,TEXTO;
     EditText username,password;
     JSONObject jsonObject = null;
@@ -78,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> adapterPrueba;
     int IdColegio;
     String codigo, nombresRep,apelRep;
-    Integer periodo;
+    Integer periodo,IdAcquirer,IdCommerce;
     SharedPreferences settings;
     TextInputLayout inputLayoutUsername,inputLayoutPassword;
     final Map<String, String> paramsClientes = new HashMap<String, String>();
     Map<String,String> map;
-    String colegio;
+    String colegio,CommerceName;
+    String nomCol = "";
 
 
     private TransparentProgressDialog pd;
@@ -126,16 +126,20 @@ public class MainActivity extends AppCompatActivity {
         Institucion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                for (int i = 1; i < 30; i++) {
-                    if (parent.getItemAtPosition(position).equals(colegiosCopy.get(Integer.toString(i)))) {
+                //for (int i = 1; i < 40; i++) {
+                    String colegioEscogido = parent.getItemAtPosition(position).toString();
+                    int codColegioEsc = (int) getKeyFromValue(colegiosCopy,colegioEscogido);
+                    //String colegiosdf = colegiosCopy.get(a);
+
+                    if (parent.getItemAtPosition(position).equals(colegiosCopy.get(codColegioEsc))) {
                         //IdColegio = i;
                         //colegio = map.get(i);
                         //Log.d(TAG, "codi cole: " + colegio);
-                        IdColegio = i;
-                        Log.d(TAG, "codi cole: " + colegio);
+                        IdColegio = codColegioEsc;
+                        //Log.d(TAG, "codi cole: " + colegio);
                         //Toast.makeText(getApplicationContext(), "id colegio:" + IdColegio + ", colegio: " + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show();
                     }
-                }
+                //}
             }
 
             @Override
@@ -160,11 +164,77 @@ public class MainActivity extends AppCompatActivity {
                 params.put("password", passwordS);
                 params.put("tipo_usua", "2");
                 params.put("opcion", "login_representante");
+
+
                 if (username.length() > 0 && password.length() > 0) {
                     doWebRequestPost(URL, params);
+
+                    switch (IdColegio) {
+                        case 1:
+                            IdAcquirer = 123;
+                            IdCommerce = 8656;
+                            CommerceName = "LICEO PANAMERICANO";
+                            nomCol = "liceopanamericano";
+                            break;
+                        case 2:
+                            IdAcquirer = 123;
+                            IdCommerce = 8655;
+                            CommerceName = "ECOMUNDO BABAHOYO";
+                            nomCol = "ecobab";
+                            break;
+                        case 5:
+                            IdAcquirer = 3;//produccion
+                            IdCommerce = 375;//produccion
+                            CommerceName = "LA MODERNA";
+                            nomCol = "moderna";
+                            break;
+                        case 11:
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            nomCol = "ecobabvesp";
+                            break;
+                        case 12:
+                            IdAcquirer = 5;
+                            IdCommerce = 567;
+                            CommerceName = "LA MODERNA - DESARROLLO";
+                            nomCol = "desarrollo";
+                            break;
+                        case 16:
+                            nomCol = "delfos";
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            break;
+                        case 17:
+                            nomCol = "delfosvesp";
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            break;
+                        case 18:
+                            nomCol = "liceopanamericanosur";
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            break;
+                        case 26:
+                            nomCol = "duplos";
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            break;
+                        case 27:
+                            nomCol = "arcoiris";
+                            //IdAcquirer = 123;
+                            //IdCommerce = 8654;
+                            break;
+                    }
+
                     settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor1 = settings.edit();
                     editor1.putString("colegio", Integer.toString(IdColegio));
+                    editor1.putString("nomCol", nomCol);
+                    if(IdAcquirer != null && IdCommerce != null && CommerceName!= null) {
+                        editor1.putInt("IdAcquirer", IdAcquirer);
+                        editor1.putInt("IdCommerce", IdCommerce);
+                        editor1.putString("CommerceName", CommerceName);
+                    }
                     editor1.commit();
 
                 } else {
@@ -185,6 +255,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static Object getKeyFromValue(Map hm, Object value) {
+        for (Object o : hm.keySet()) {
+            if (hm.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -208,7 +287,9 @@ public class MainActivity extends AppCompatActivity {
 
                     if(exito.equals("OK"))
                     {
-                        codigo = jresponse.getString("codigo");
+
+
+                        codigo =jresponse.getString("codigo");
                         periodo = jresponse.getInt("periodo");
                         nombresRep = jresponse.getString("nombre");
                         apelRep = jresponse.getString("apellido");
@@ -257,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void funcion(final Map<String,String> json) {
 
-        colegios.put("0", "SELECCIONE UN COLEGIO");
+        colegios.put(0, "SELECCIONE UN COLEGIO");
         getString(new getString.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
@@ -271,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("id:", ID);
                         TEXTO = Object.getString("texto");
                         Log.d("texto:", TEXTO);
-                        colegios.put(ID, TEXTO);
+                        colegios.put(Integer.parseInt(ID), TEXTO);
                     }
                     ShowColegios(colegios);
                     colegiosCopy = ShowColegios(colegios);
@@ -312,9 +393,9 @@ public class MainActivity extends AppCompatActivity {
         void onSuccess(String result);
     }
 
-    public HashMap<String,String> ShowColegios(HashMap<String,String> colegios){
-        map = new TreeMap<String,String>(colegios);
-        Collection<String> vals = map.values();
+    public TreeMap<Integer,String> ShowColegios(TreeMap<Integer,String> colegios){
+        //map = new TreeMap<Integer,String>(colegios);
+        Collection<String> vals = colegios.values();
         String[] array = vals.toArray(new String[vals.size()]);
         adapterPrueba = new ArrayAdapter<CharSequence>(this,R.layout.spinner_item,array);
         adapterPrueba.setDropDownViewResource(R.layout.spinner_drop_down);

@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -39,21 +39,12 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
-import org.apache.http.util.ByteArrayBuffer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,7 +55,7 @@ public class MaterialesFragment extends Fragment {
     TextView noMateriales, materiaE, profesorE;
     ImageView imagenMat;
     final Map<String,String> paramsMateriales = new HashMap<String,String>();
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     String colegio,periodo;
     private String TAG = "TAG";
     private JSONArray JsonAll;

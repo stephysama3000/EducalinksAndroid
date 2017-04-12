@@ -41,6 +41,7 @@
         android:textSize="18sp"
         />
 
+
     <ImageView
         android:layout_marginTop="10dp"
         android:layout_width="70dp"
@@ -61,6 +62,5 @@
         android:visibility="gone"
         android:textStyle="bold"
         />
-
 
 </LinearLayout>

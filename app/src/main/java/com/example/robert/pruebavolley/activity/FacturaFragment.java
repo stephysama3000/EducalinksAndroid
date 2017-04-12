@@ -55,14 +55,14 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FacturaFragment extends android.app.Fragment {
+public class FacturaFragment extends Fragment {
 
     private TransparentProgressDialog pd;
     private Handler h;
     private Runnable r;
     ProgressDialog pDialog;
 
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     SharedPreferences settings;
     TextView noFacturas;
     String nomCol;

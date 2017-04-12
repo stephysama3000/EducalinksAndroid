@@ -39,7 +39,7 @@ import java.util.Set;
 
 public class BackgroundService extends Service {
 
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     private String TAG = "TAG";
     private JSONArray JsonAll;
     JSONObject jsonObject = null;
@@ -121,6 +121,9 @@ public class BackgroundService extends Service {
         Notification notification = new Notification(R.drawable.logo_smallnoti,"Nueva Agenda", System.currentTimeMillis());
         Intent notificationIntent = new Intent(this,ActivityUpdate.class);
 
+        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+
         editor.putString("notificacion","agenda");
         editor.commit();
 
@@ -129,13 +132,19 @@ public class BackgroundService extends Service {
         intent.putExtra("fragment","agenda");
         sendBroadcast(intent);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+        builder.setAutoCancel(false);
+        builder.setTicker("this is ticker text");
+        builder.setContentTitle(notificationTitle);
+        builder.setContentText(notificationMessage);
+        builder.setContentIntent(pendingIntent);
+        builder.setOngoing(true);
+        builder.setNumber(100);
 
-        notification.setLatestEventInfo(this, notificationTitle, notificationMessage, pendingIntent);
+        notification = builder.getNotification();
         notification.flags= Notification.FLAG_AUTO_CANCEL;
         //paramsAgenda.put("opcion", "notificaciones_update");
 
-            notificationManager.notify(i, notification);
+        notificationManager.notify(i, notification);
         //notificationManager.notify(i1, notification);
     }
 
@@ -146,6 +155,10 @@ public class BackgroundService extends Service {
         Notification notification = new Notification(R.drawable.logo_smallnoti,"Nueva Actualizacion", System.currentTimeMillis());
         Intent notificationIntent = new Intent(this,ActivityUpdate.class);
 
+        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+
         editor.putString("notificacion","actualizacion");
         editor.commit();
 
@@ -154,9 +167,17 @@ public class BackgroundService extends Service {
         intent.putExtra("fragment","agenda");
         sendBroadcast(intent);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+        builder.setAutoCancel(false);
+        builder.setTicker("this is ticker text");
+        builder.setContentTitle(notificationTitle);
+        builder.setContentText(notificationMessage);
+        builder.setContentIntent(pendingIntent);
+        builder.setOngoing(true);
+        builder.setNumber(100);
 
-        notification.setLatestEventInfo(this, notificationTitle, notificationMessage, pendingIntent);
+        notification = builder.getNotification();
+
+        //notification.setLatestEventInfo(this, notificationTitle, notificationMessage, pendingIntent);
         notification.flags= Notification.FLAG_AUTO_CANCEL;
         //paramsAgenda.put("opcion", "notificaciones_update");
 
@@ -169,6 +190,10 @@ public class BackgroundService extends Service {
 
         Notification notification = new Notification(R.drawable.logo_smallnoti,"Nuevo Mensaje", System.currentTimeMillis());
         Intent notificationIntent = new Intent(this,ActivityUpdate.class);
+
+        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+
         editor.putString("notificacion","mensajes");
         editor.commit();
         Intent intent = new Intent();
@@ -176,9 +201,15 @@ public class BackgroundService extends Service {
         intent.putExtra("mensajes","mensajes");
         sendBroadcast(intent);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+        builder.setAutoCancel(false);
+        builder.setTicker("this is ticker text");
+        builder.setContentTitle(notificationTitle);
+        builder.setContentText(notificationMessage);
+        builder.setContentIntent(pendingIntent);
+        builder.setOngoing(true);
+        builder.setNumber(100);
 
-        notification.setLatestEventInfo(this, notificationTitle, notificationMessage, pendingIntent);
+        notification = builder.getNotification();
         notification.flags= Notification.FLAG_AUTO_CANCEL;
         //paramsAgenda.put("opcion", "notificaciones_update");
 

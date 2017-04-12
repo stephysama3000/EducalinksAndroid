@@ -5,8 +5,6 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +24,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -167,6 +167,15 @@ public class HomeFragment extends Fragment {
                 Fragment fragment = new AgendaFragment();
                 FragmentManager fragmentManager2 = getFragmentManager();
                 fragmentManager2.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagAgenda").commit();
+                /*Intent myIntent = new Intent(getContext(), PagoActivity.class);
+                getContext().startActivity(myIntent);*/
+                //probar resultado activity
+                //Intent myIntent = new Intent(getContext(), RespuestaPagoActivity.class);
+                //getContext().startActivity(myIntent);
+                //probar pagos
+                /*Fragment fragment = new PagosFragment();
+                FragmentManager fragmentManager5 = getFragmentManager();
+                fragmentManager5.beginTransaction().replace(R.id.frame, fragment).addToBackStack("tagPagos").commit();*/
             }
         });
 

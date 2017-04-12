@@ -5,7 +5,6 @@
     android:id="@+id/relative"
     android:background="@drawable/background_login"
     android:orientation="vertical"
-    android:gravity="center_vertical|center_horizontal"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +19,6 @@
             android:id="@+id/profile_image"
             android:layout_width="84dp"
             android:layout_height="84dp"
-            app:border_color="#FF000000"
             android:layout_centerHorizontal="true" />
         <!--app:border_color="#FF000000"-->
 

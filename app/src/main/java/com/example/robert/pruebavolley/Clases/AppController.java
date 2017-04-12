@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.orm.SugarContext;
 
 
 public class AppController extends Application {
@@ -23,6 +24,13 @@ public class AppController extends Application {
 	public void onCreate() {
 		super.onCreate();
 		mInstance = this;
+		SugarContext.init(this);
+	}
+
+	@Override
+	public void onTerminate() {
+		super.onTerminate();
+		SugarContext.terminate();
 	}
 
 	public static synchronized AppController getInstance() {

@@ -29,11 +29,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.net.URL;
-import java.net.URLConnection;
-
 public class AdapterClases extends ArrayAdapter<String> {
 
     private final Activity context;
@@ -83,7 +78,6 @@ public class AdapterClases extends ArrayAdapter<String> {
 
         ImageLoader.getInstance().init(config);
         // END - UNIVERSAL IMAGE LOADER SETUP
-
 
         Drawable myIcon = getContext().getResources().getDrawable( R.drawable.defaultclase);
         ImageLoader imageLoader = ImageLoader.getInstance();

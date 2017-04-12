@@ -5,7 +5,6 @@ import com.android.volley.toolbox.Volley;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -59,9 +59,9 @@ import java.util.Map;
 import static android.widget.TableLayout.*;
 
 
-public class AgendaFragment extends Fragment{
+public class AgendaFragment extends Fragment {
 
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     private String TAG = "TAG";
     private JSONArray JsonAll;
     JSONObject jsonObject = null;
@@ -368,9 +368,7 @@ public class AgendaFragment extends Fragment{
                 ImageStorage.saveToSdCard(img_prof[i_], imagename_);
             }
         }
-    }*/
-
-    private class TransparentProgressDialog extends Dialog {
+    }*/private class TransparentProgressDialog extends Dialog {
 
         private ImageView iv;
 
@@ -402,4 +400,6 @@ public class AgendaFragment extends Fragment{
             iv.startAnimation(anim);
         }
     }
+
+
 }

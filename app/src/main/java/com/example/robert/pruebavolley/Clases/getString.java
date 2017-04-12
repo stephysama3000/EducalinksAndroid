@@ -9,7 +9,7 @@ import com.example.robert.pruebavolley.Clases.AppController;
 public class getString {
 
     String tag_string_req = "string_raq";
-    String url = "http://desarrollo.educalinks.com.ec/mobile/colegios_clientes.php";
+    String url = "http://app.educalinks.com.ec/mobile/colegios_clientes.php";
     String result="";
 
     public String get_String(final VolleyCallback callback) {

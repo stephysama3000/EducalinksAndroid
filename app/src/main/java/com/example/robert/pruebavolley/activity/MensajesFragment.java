@@ -3,7 +3,6 @@ package com.example.robert.pruebavolley.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -65,11 +65,11 @@ import java.util.Set;
 import java.util.TreeMap;
 
 
-public class MensajesFragment extends android.app.Fragment {
+public class MensajesFragment extends Fragment {
 
     String nomCol;
     final Map<String,String> paramsMensajesEnt = new HashMap<String,String>();
-    String URL= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL= "http://app.educalinks.com.ec/mobile/main.php";
     private JSONArray JsonAll;
     JSONObject jsonObject = null;
     String profesorcodiNM,tipo,profcodi, nombreProfesor, materia,key, text,mensajeDe,mensajeTipoDe,mensajeTitulo,mensajeDetalle,mensajeFechaEnvio,mensajeFechaLectura,codigoEmisor,codigoRecibo,mensajecodigo;
@@ -78,7 +78,7 @@ public class MensajesFragment extends android.app.Fragment {
     Bitmap b;
     Bitmap[] images;
     ListView list;
-    android.app.Fragment fragment = null;
+    Fragment fragment = null;
     FloatingActionButton enviados,eliminados,nuevoMens,recibidos;
     SharedPreferences settings;
     SharedPreferences.Editor editor;
@@ -97,7 +97,7 @@ public class MensajesFragment extends android.app.Fragment {
     String alumnocodi, pericodi,colegio,reprcodigo ;
     EditText asunto,detallemensaje;
     String opcionFragment;
-    String[] nombreCompletos;
+    String[] nombreCompletos,textoDetalle;
     int j;
 
 
@@ -105,7 +105,6 @@ public class MensajesFragment extends android.app.Fragment {
     private Handler h;
     private Runnable r;
     ProgressDialog pDialog;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -392,6 +391,7 @@ public class MensajesFragment extends android.app.Fragment {
                     codigoPara = new String[Keys.size()];
                     images = new Bitmap[Keys.size()];
                     mensCodi = new String[Keys.size()];
+                    textoDetalle = new String[Keys.size()];
                     for (i = 0; i < JsonAll.length(); i++) {
                         final int Index = i;
                         final JSONObject Object = JsonAll.getJSONObject(i);
@@ -407,6 +407,7 @@ public class MensajesFragment extends android.app.Fragment {
                         detalle[i] = mensajeDetalle;
                         text = stripHtml(mensajeDetalle);
                         text = text.replace("\n", " ");
+                        textoDetalle[i] = text;
 
                         mensajeDetalle.replace("<p>", " ");
                         mensajeDetalle.replace("</p>", "<br>");
@@ -487,7 +488,7 @@ public class MensajesFragment extends android.app.Fragment {
 
                         }
 
-                        int length = mensajeDetalle.length();
+                        /*int length = mensajeDetalle.length();
 
 
                         if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
@@ -521,7 +522,7 @@ public class MensajesFragment extends android.app.Fragment {
                             else{
                                 detalle[i] =text;
                             }
-                        }
+                        }*/
 
 
 
@@ -539,7 +540,7 @@ public class MensajesFragment extends android.app.Fragment {
 
                         }*/
                     }
-                    AdapterMensajesEnt adapter = new AdapterMensajesEnt(getActivity().getBaseContext(),nombresEmisor, titulo, detalle,fechaEnvio,fechaLectura);//,imageProfesor);
+                    AdapterMensajesEnt adapter = new AdapterMensajesEnt(getActivity().getBaseContext(),nombresEmisor, titulo, textoDetalle,fechaEnvio,fechaLectura);//,imageProfesor);
                     list=(ListView)getActivity().findViewById(R.id.listViewMensajes);
                     list.setAdapter(adapter);
                     list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

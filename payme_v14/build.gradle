@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('payme_v14.aar'))

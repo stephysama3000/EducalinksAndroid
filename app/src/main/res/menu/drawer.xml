@@ -34,13 +34,35 @@
             android:icon="@drawable/menu_calificaciones"
             android:title="Calificaciones" />
 
-
+        <item
+            android:id="@+id/pagos"
+            android:checked="false"
+            android:icon="@drawable/menu_pagos"
+            android:title="Pagos" />
 
         <item
             android:id="@+id/factura"
             android:checked="false"
             android:icon="@drawable/menu_facturas"
             android:title="@string/factura" />
+
+        <item
+            android:id="@+id/visitas"
+            android:checked="false"
+            android:icon="@drawable/menu_medic"
+            android:title="@string/visitas" />
+
+        <item
+            android:id="@+id/hojavida"
+            android:checked="false"
+            android:icon="@drawable/menu_hojavida"
+            android:title="@string/hojavida" />
+
+        <item
+            android:id="@+id/estado"
+            android:checked="false"
+            android:icon="@drawable/menu_estado"
+            android:title="@string/estado" />
 
         <item
             android:id="@+id/notificaciones"

@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.robert.pruebavolley.activity.hojaVidaFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="HOJA DE VIDA"
+        android:background="@color/azulInicio"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="#FAFAFA"
+        android:paddingBottom="10dp"
+        android:gravity="bottom|center_horizontal" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione el tipo de observación:"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tipoObservaciones"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_observ"
+        android:spinnerMode="dropdown"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="clip_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Observación"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalle"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listObservaciones"
+        android:layout_gravity="center_horizontal"
+        android:groupIndicator="@null"
+        android:divider="@null"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noObservaciones"
+        android:text="No hay observaciones que presentar"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        android:textSize="15dp"
+        />
+
+</LinearLayout>

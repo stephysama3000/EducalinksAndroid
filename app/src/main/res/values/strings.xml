@@ -8,6 +8,9 @@
     <string name="App">EducaLinks</string>
     <string name="Agenda">Agenda</string>
     <string name="factura">Facturas</string>
+    <string name="visitas">Visitas Médicas</string>
+    <string name="hojavida">Hoja de Vida</string>
+    <string name="estado">Estado de Cuenta</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="Acerca">Acerca de</string>
     <string name="cerrar">Cerrar Sesión</string>
@@ -54,5 +57,11 @@
     <string name="title_activity_activity_update">ActivityUpdate</string>
     <string name="title_activity_activity_noti">ActivityNoti</string>
 
+
+    <string-array name="bookmark_titles">
+        <item>Google</item>
+        <item>Bing</item>
+        <item>Gmail</item>
+    </string-array>
 
 </resources>

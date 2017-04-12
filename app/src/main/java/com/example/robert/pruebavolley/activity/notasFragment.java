@@ -6,9 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,8 +48,10 @@ public class notasFragment extends Fragment {
     private Handler h;
     private Runnable r;
     ProgressDialog pDialog;
+    ImageView warning;
 
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     SharedPreferences settings;
     TextView noNotas,bloqueo;
     final Map<String,String> paramsNotas = new HashMap<String,String>();
@@ -59,7 +61,6 @@ public class notasFragment extends Fragment {
     String [] periDistCodi,periDistDeta,periDistDetaPadre;
     String alumcodi,cursParaCodi,periCodi, nomCol;
     ListView list;
-    ImageView warning;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,8 +86,8 @@ public class notasFragment extends Fragment {
 
         settings = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         noNotas = (TextView) rootView.findViewById(R.id.noNotas);
-        bloqueo = (TextView) rootView.findViewById(R.id.bloqueo);
         warning = (ImageView) rootView.findViewById(R.id.warning);
+        bloqueo = (TextView) rootView.findViewById(R.id.bloqueo);
         alumcodi = settings .getString("alumnocodi", "null");
         cursParaCodi = settings .getString("cursoCodi", "null");
         String periDistCabTipo = settings .getString("distipo", "null");

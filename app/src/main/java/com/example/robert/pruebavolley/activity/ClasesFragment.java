@@ -3,16 +3,16 @@ package com.example.robert.pruebavolley.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -63,7 +63,7 @@ public class ClasesFragment extends Fragment {
     TextView noClases;
     final Map<String,String> paramsMaterias = new HashMap<String,String>();
     final Map<String,String> paramsMateriales = new HashMap<String,String>();
-    String URL_alumnos= "http://demo.educalinks.com.ec/mobile/main.php";
+    String URL_alumnos= "http://app.educalinks.com.ec/mobile/main.php";
     //ShowMaterias
     private String TAG = "TAG";
     private JSONArray JsonAll;

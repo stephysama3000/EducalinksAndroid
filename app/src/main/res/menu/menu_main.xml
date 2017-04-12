@@ -4,14 +4,16 @@
     tools:context=".Activity3">
 
     <!--<item
-        android:id="@+id/notificaciones"
-        android:title=""
-        android:orderInCategory="1"
-        app:showAsAction="always" />
+        android:id="@+id/action_mainMenu2"
+        android:icon="@drawable/ic_send"
+        android:orderInCategory="10"
+        android:title="Main Menu"
+        app:showAsAction="ifRoom|withText" />
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />-->
+        android:orderInCategory="1"
+        app:showAsAction="always" />-->
 
 
 </menu>
